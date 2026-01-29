@@ -1,5 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/simple-mern');
+const MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/simple-mern";
+
+mongoose.connect(MONGODB_URI);
 
 module.exports = mongoose;
