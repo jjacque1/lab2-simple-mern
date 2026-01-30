@@ -2,9 +2,21 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const cors = require("cors");
+
 const app = express();
 
 const routeTasks = require('./src/routes/tasks');
+
+app.use(
+  cors({
+    origin: "https://lab2-simple-mern-frontend.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+app.options("*", cors());
+
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(bodyParser.json());
